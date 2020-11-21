@@ -13,15 +13,26 @@ class Contador extends Component{
         
         render(){
         
-        return <span>{this.state.contador}</span>
+        return <ContadorNumero numero={this.state.contador}/> 
         }
     }
+
+class ContadorNumero extends Component{
+    render() {
+        console.log('ContadorNumero render()')
+        return (
+            <div>
+                <span> {this.props.numero} </span>
+            </div>
+        )
+    }
+}
     
     class App extends Component{
         render() {
             return (
                 <div className = "App">
-               <p> Haciendo un contador con ReactJS</p>
+               <p> Propagando el state de nuestros componentes</p>
                <Contador />
                 </div>
             )
