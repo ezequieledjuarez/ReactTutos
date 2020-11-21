@@ -1,69 +1,20 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css"; //No es HMTL es JSX, sintaxis XML que se preprocesa y se convierte en JS
-
-/*function Intro(props){
-  return <h1>{props.title}</h1>
-}*/
-
-/*const Intro = (props) => <h2> {props.title} </h2>*/
-
-class Intro extends Component {
-  render() {
-    return <h1>{this.props.title}</h1>;
-  }
+class Title extends Component{
+    render(){
+    return <h1>{this.props.text}</h1>
+    }
 }
-
-class Text extends Component {
-  render() {
-        const {
-            arrayOfNumbers,
-            multiply, 
-            objectWithInfo,
-            title
-        } = this.props
-    
-    const mappedNumbers = arrayOfNumbers.map(multiply)
-    return (
-      <div>
-         {title}
-        <p>{mappedNumbers.join(', ')}</p>
-        <p>{objectWithInfo.key}</p>
-       {/*  <p>{this.props.number}</p>
-        <p>{this.props.text}</p>
-        <p>{textoSegunBoole}</p> */}
-      </div>
-    );
-  }
+Title.defaultProps = {
+    text: 'titulo por defecto'
 }
-
-
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Intro title="Intro desde Props" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-          <Text 
-            arrayOfNumbers = {[2,3,10]}
-            multiply = {(number)=> number*6}
-            number={2} 
-            objectWithInfo = {{key: 'Firstvalue', key2:'otherValue'}}
-            text="Cadena de texto" 
-            title ={ <h1>Este es el título</h1>}
-          />
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+    render() {
+        return (
+            <div className = "App">
+            <Title text = 'Otro titulo desde props' />    
+            </div>
+        )
+    }
 }
 
 export default App;
