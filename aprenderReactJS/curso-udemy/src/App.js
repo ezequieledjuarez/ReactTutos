@@ -16,12 +16,19 @@ class Intro extends Component {
 
 class Text extends Component {
   render() {
-    const textoSegunBoole = this.props.isActivated ? "On" : "Off";
-    const mappedNumbers = this.props.arrayOfNumbers.map(n=> n * 3)
+        const {
+            arrayOfNumbers,
+            multiply, 
+            objectWithInfo,
+            title
+        } = this.props
+    
+    const mappedNumbers = arrayOfNumbers.map(multiply)
     return (
       <div>
+         {title}
         <p>{mappedNumbers.join(', ')}</p>
-        <p>{this.props.objectWithInfo.key}</p>
+        <p>{objectWithInfo.key}</p>
        {/*  <p>{this.props.number}</p>
         <p>{this.props.text}</p>
         <p>{textoSegunBoole}</p> */}
@@ -47,10 +54,11 @@ function App() {
           Learn React
           <Text 
             arrayOfNumbers = {[2,3,10]}
-            isActivated
+            multiply = {(number)=> number*6}
             number={2} 
             objectWithInfo = {{key: 'Firstvalue', key2:'otherValue'}}
             text="Cadena de texto" 
+            title ={ <h1>Este es el título</h1>}
           />
         </a>
       </header>
