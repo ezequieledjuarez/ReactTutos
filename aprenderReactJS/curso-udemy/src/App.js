@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 // Las clases deben ir en mayus
-class Name extends Component{
-        //State va a recibir un objeto con K/V
-        state = {name: 'EzzeGuason'}
+class Contador extends Component{
+
+        constructor(){
+            super()
+            this.state = {contador: 1}
+        
+            setInterval(()=> {
+            this.setState({contador: this.state.contador +1 })
+        }, 1000)
+        }
+        
         render(){
         
-        return <span>{this.state.name}</span>
+        return <span>{this.state.contador}</span>
         }
     }
     
@@ -13,8 +21,8 @@ class Name extends Component{
         render() {
             return (
                 <div className = "App">
-               <p> Colocando mi nombre a través de una Class Field</p>
-               <Name />
+               <p> Haciendo un contador con ReactJS</p>
+               <Contador />
                 </div>
             )
         }
