@@ -1,20 +1,24 @@
 import React, { Component } from "react";
-class Title extends Component{
-    render(){
-    return <h1>{this.props.text}</h1>
+// Las clases deben ir en mayus
+class Name extends Component{
+        //State va a recibir un objeto con K/V
+        state = {name: 'EzzeGuason'}
+        render(){
+        
+        return <span>{this.state.name}</span>
+        }
     }
-}
-Title.defaultProps = {
-    text: 'titulo por defecto'
-}
-class App extends Component{
-    render() {
-        return (
-            <div className = "App">
-            <Title text = 'Otro titulo desde props' />    
-            </div>
-        )
+    
+    class App extends Component{
+        render() {
+            return (
+                <div className = "App">
+               <p> Colocando mi nombre a través de una Class Field</p>
+               <Name />
+                </div>
+            )
+        }
     }
-}
+    
 
 export default App;
