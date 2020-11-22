@@ -1,28 +1,26 @@
 import React, { Component } from "react";
-
-class Box extends Component{
-    render() {
-        return (
-            <div style={{
-                border: '1px solid #000',
-                margin:5,
-                padding:5}}>
-                {this.props.children}
-            </div>
-        )
-    }
-}
-
+import PropTypes from 'prop-types'
 class Article extends Component{
+    static propTypes ={
+        author: PropTypes.string.isRequired
+    }
+    constructor(props){
+        super(props)
+        if(typeof props.author === 'undefined'){
+            console.warn('author prop is required')
+            throw new Error('author prop is required')
+        }
+    }
     render() {
+        const{author, children, date, title} = this.props
         return (
             <div>
                 <section>
-                    <h2>{this.props.title}</h2>    
-                    <p><em>Escrito por {this.props.author}</em></p>
-                    <Box>{this.props.date}</Box>        
+                    <h2>{title}</h2>    
+                    <p><em>Escrito por {author}</em></p>
+                    <date>{date}</date>        
                     <article>
-                        {this.props.children}
+                        {children}
                     </article>    
                 </section>    
             </div>
@@ -40,7 +38,7 @@ class App extends Component{
                     date={new Date().toLocaleDateString()}
                     title='Articulo sobre la propiedad Children'
                 >
-                    <p>El contenido que envolvemos dentro del componente Article será enviado al componente como this.props.children</p>
+                    <p>El contenido que envolvemos dentro del componente Article será enviado al componente como children</p>
                     <strong>Y mantiene las propiedades y componentes que hay añadidos dentro</strong>        
                 </Article>      
             </div>
