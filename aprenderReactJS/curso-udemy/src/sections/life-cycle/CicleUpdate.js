@@ -2,10 +2,12 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 const ANIMAL_IMAGES = {
+    panda:'https://nationalzoo.si.edu/sites/default/files/styles/slide_1400x700/public/support/adopt/giantpanda-03.jpg',
     cat: 'https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg',
-    dolphin:'https://4.bp.blogspot.com/-hfW9FyxhxnA/T9CGpSAgUzI/AAAAAAAACd4/H282htZT3pU/s1600/delfin-lengua-fuera.jpg',
-    panda:'https://nationalzoo.si.edu/sites/default/files/styles/slide_1400x700/public/support/adopt/giantpanda-03.jpg'
+    dolphin:'https://4.bp.blogspot.com/-hfW9FyxhxnA/T9CGpSAgUzI/AAAAAAAACd4/H282htZT3pU/s1600/delfin-lengua-fuera.jpg'
 }
+
+const ANIMALS = Object.keys(ANIMAL_IMAGES)
 
 class AnimalImage extends Component{
     state = {src: ANIMAL_IMAGES[this.props.animal]}
@@ -29,26 +31,30 @@ class AnimalImage extends Component{
 }
 
 AnimalImage.propTypes = {
-    animal: PropTypes.oneOf(['cat','dolphin','panda'])
+    animal: PropTypes.oneOf([(ANIMALS)])
 }
-AnimalImage.defaultProps = {
-    animal:'panda'
-}
+
+
 class CicleUpdate extends Component {
     state = {animal: 'panda'}
+
+    _renderAnimalButton = (animal)=>{
+        return(
+            <button 
+            disabled={animal === this.state.animal}
+            key = {animal} 
+            onClick = {()=> this.setState({animal})}>
+               {animal}
+            </button>
+        )
+    }
+
     render(){
         return (
             <div>
               <h4>Ciclo de Actualizacion, Ejemplo de ComponentWillReceiveProps</h4>
-                <button onClick = {()=> this.setState({animal:'panda'})}>
-                    Panda
-                </button>
-                <button onClick = {()=> this.setState({animal:'cat'})}>
-                    Cat
-                </button>
-                <button onClick = {()=> this.setState({animal:'dolphin'})}>
-                    Dolphin
-                </button>
+               {ANIMALS.map(this._renderAnimalButton)}
+              
               <AnimalImage animal = {this.state.animal}/>
             </div>
         )
