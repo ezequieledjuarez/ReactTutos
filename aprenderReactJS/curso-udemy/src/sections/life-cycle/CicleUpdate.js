@@ -12,10 +12,51 @@ const ANIMALS = Object.keys(ANIMAL_IMAGES)
 class AnimalImage extends PureComponent{
     state = {src: ANIMAL_IMAGES[this.props.animal]}
     componentWillReceiveProps(nextProps){
+        console.clear()
         console.log('1.componentWillReceiveProps')
         console.log(nextProps)
         this.setState({src: ANIMAL_IMAGES[nextProps.animal]})
     }
+    shouldComponentUpdate(nextProps){
+        console.log('2.ShouldComponentUpdate', nextProps)
+        return this.props.animal !== nextProps.animal
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        console.log('3. componentWillUpdate', nextProps, nextState)
+        const img = document.querySelector('img')
+        console.log('from img element', {alt: img.alt})
+        //web animations api
+        img.animate([
+            {
+                filter:'blur(0px)'
+            },
+            {
+                filter:'blur(2px)'
+            }
+        ],{
+            duration: 500,
+            easing:'ease'
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        console.log('4.ComponentDidUpdate')
+        const img = document.querySelector('img')
+        img.animate([
+            {
+                filter:'blur(2px)'
+            },
+            {
+                filter:'blur(0px)'
+            }
+        ],{
+            duration:1500,
+            easing:'ease'
+        })
+        console.log('from img element', {alt: img.alt})
+    }
+
     render(){
         console.log('--> render')
         return (
