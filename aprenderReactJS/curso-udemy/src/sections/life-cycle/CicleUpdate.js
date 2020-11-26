@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import PropTypes from 'prop-types'
 const ANIMAL_IMAGES = {
     panda:'https://nationalzoo.si.edu/sites/default/files/styles/slide_1400x700/public/support/adopt/giantpanda-03.jpg',
@@ -9,14 +9,15 @@ const ANIMAL_IMAGES = {
 
 const ANIMALS = Object.keys(ANIMAL_IMAGES)
 
-class AnimalImage extends Component{
+class AnimalImage extends PureComponent{
     state = {src: ANIMAL_IMAGES[this.props.animal]}
     componentWillReceiveProps(nextProps){
-        console.log('componentWillReceiveProps')
+        console.log('1.componentWillReceiveProps')
         console.log(nextProps)
         this.setState({src: ANIMAL_IMAGES[nextProps.animal]})
     }
     render(){
+        console.log('--> render')
         return (
             <div>
                 <p> SELECTED {this.props.animal}</p>
@@ -41,7 +42,7 @@ class CicleUpdate extends Component {
     _renderAnimalButton = (animal)=>{
         return(
             <button 
-            disabled={animal === this.state.animal}
+            //disabled={animal === this.state.animal}
             key = {animal} 
             onClick = {()=> this.setState({animal})}>
                {animal}
@@ -49,10 +50,11 @@ class CicleUpdate extends Component {
         )
     }
 
+    
     render(){
         return (
             <div>
-              <h4>Ciclo de Actualizacion, Ejemplo de ComponentWillReceiveProps</h4>
+              <h4>Ciclo de Actualizacion, Ejemplo de ShouldComponentUpdate</h4>
                {ANIMALS.map(this._renderAnimalButton)}
               
               <AnimalImage animal = {this.state.animal}/>
