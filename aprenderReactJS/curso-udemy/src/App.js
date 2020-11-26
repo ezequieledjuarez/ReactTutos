@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ComponentDidMount from './sections/life-cycle/componentDidMount'
+import CicleUpdate from './sections/life-cycle/CicleUpdate.js'
 class App extends Component{
     render() {
-        //Cada descendiente del array debe tener una unique key
+        
         return (
             <div className='App'>
-            <ComponentDidMount />   
+            <CicleUpdate />   
             </div>
         )
     }
