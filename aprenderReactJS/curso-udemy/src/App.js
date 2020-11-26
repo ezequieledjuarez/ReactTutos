@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import PropTypes from 'prop-types'
 /* class Article extends Component{
     render(){
         return(
@@ -24,11 +24,27 @@ function Article(props){
     )
 }
 
-const Button = ({ borderColor,label}) =>(
+Article.propTypes = {
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    children: PropTypes.any
+}
+
+//Solo funciona con stateless components
+const Button = ({ borderColor = 'red',label}) =>(
     <button stylee ={{borderColor, display:'block'}}>
         {label}
     </button>
 )
+
+Button.propTypes={
+    borderColor: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+
+}
+
+
 /* lass Button extends Component{
      render(){
          return(
