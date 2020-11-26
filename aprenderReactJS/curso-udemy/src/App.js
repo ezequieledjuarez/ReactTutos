@@ -1,48 +1,58 @@
 import React, { Component } from "react";
 
-class Button extends Component{
+/* class Article extends Component{
     render(){
         return(
-            <button style={{borderColor: this.props.borderColor, display: 'block'}}>
-                {this.props.label}
-            </button>
+            <section>
+                <h2>{this.props.title}</h2>
+                <p><em>Escrito por {this.props.author}</em></p>
+                <date>{this.props.date}</date>
+                <article>{this.props.children}</article>
+            </section> 
         )
-        
     }
-}
-Button.defaultProps = {
-    borderColor: '#09f'
-}
-    class ButtonDanger extends Component{
-        render(){
-            return <Button borderColor ='red' label={this.props.label}/>
-        }
-    }
+} */
 
-    class ButtonWithLegend extends Component{
-        render(){
-            return(
-                <div>
-                    <Button label={this.props.label} borderColor={this.props.borderColor}/>
-                    <small>{this.props.legend}</small>
-                </div>
-            )
-        }
-    }
+function Article(props){
+    return(
+        <section>
+            <h2>{props.title}</h2>
+            <p><em>Escrito por {props.author}</em></p>
+            <date>{props.date}</date>
+            <article>{props.children}</article>
+        </section> 
+    )
+}
+
+const Button = ({ borderColor,label}) =>(
+    <button stylee ={{borderColor, display:'block'}}>
+        {label}
+    </button>
+)
+/* lass Button extends Component{
+     render(){
+         return(
+                <button style={{borderColor: this.props.borderColor, display:'block'}}>
+                    {this.props.label}   
+                </button>
+         )
+     }
+} */
 
 class App extends Component{
-    render() {
-        
-        return (
-            <div className='App'>
-                <h4>Composicion vs Herencia</h4>  
-                <Button label='Click aqui'/>
-                <br />
-                <ButtonDanger label='no Click aqui'/>
-                <br />
-                <ButtonWithLegend
-                    label = 'Boton con explicacion'
-                    legend = 'Clickea para hacer algo'/>
+    render(){
+        return(
+            <div className = "App">
+                <h4>Stateless Component</h4>
+                <Article
+                    author='EzzeGuason'
+                    date={new Date().toLocaleDateString()}
+                    title= 'Articulo sobre props Children'
+                >
+                <p>El contendio que envolvemos dentro del componente Article será enviado al componente como this.props.children</p>    
+                <strong>Y mantiene las etiquetas y componentes que hayas añadido dentro</strong>
+                </Article>
+                <Button label = 'comentar articulo' />
             </div>
         )
     }
