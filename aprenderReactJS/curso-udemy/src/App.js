@@ -1,32 +1,32 @@
 import React, { Component } from "react";
 
 class Button extends Component{
-    constuctor(props){
-        super()
-        this.borderColor ='#09f'
-    }
     render(){
         return(
-            <button style={{borderColor: this.borderColor, display: 'block'}}>
+            <button style={{borderColor: this.props.borderColor, display: 'block'}}>
                 {this.props.label}
             </button>
         )
         
     }
 }
-    class ButtonDanger extends Button{
-        constructor(props){
-            super()
-            this.borderColor = 'red'
+Button.defaultProps = {
+    borderColor: '#09f'
+}
+    class ButtonDanger extends Component{
+        render(){
+            return <Button borderColor ='red' label={this.props.label}/>
         }
     }
 
-    class buttonWithLegend extends Button{
+    class ButtonWithLegend extends Component{
         render(){
-            <div>
-                {super.render()}
-                <small>{this.props.legend}</small>
-            </div>
+            return(
+                <div>
+                    <Button label={this.props.label} borderColor={this.props.borderColor}/>
+                    <small>{this.props.legend}</small>
+                </div>
+            )
         }
     }
 
@@ -39,8 +39,8 @@ class App extends Component{
                 <Button label='Click aqui'/>
                 <br />
                 <ButtonDanger label='no Click aqui'/>
-                <br/>
-                <buttonWithLegend
+                <br />
+                <ButtonWithLegend
                     label = 'Boton con explicacion'
                     legend = 'Clickea para hacer algo'/>
             </div>
