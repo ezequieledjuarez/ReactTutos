@@ -1,10 +1,10 @@
 import './App.css';
-import Fetch from'./sections/Fetch.js'
+import BitCoinPriceContainer from'./sections/Fetch.js'
 
 function App() {
   return (
     <div className = "App">
-       <Fetch/>
+       <BitCoinPriceContainer/>
     </div>
   );
 }

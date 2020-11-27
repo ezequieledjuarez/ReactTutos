@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import  { Component } from 'react'
+import BitCoinPrice from './Presentational'
 
-class Btc extends Component {
+class BtcContainer extends Component {
     state = {bpi:{}}
+
     componentDidMount(){
         fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
         .then(res=>res.json())
@@ -10,26 +12,12 @@ class Btc extends Component {
             this.setState({bpi})
         })
     }
-
-    _renderCurrencies(){
-        const{bpi} = this.state
-        const currencies =  Object.keys(bpi)
-        return currencies.map(currency =>(
-            <div key = {currency}>
-                1 BTC is {bpi[currency].rate}
-                <span>{currency}</span>
-            </div>                    
-
-        ))
-    }
+  
     render(){
         return(
-            <div>
-                <h4>Bitcoin Price</h4>
-                {this._renderCurrencies()}
-            </div>
+            <BitCoinPrice bpi={this.state.bpi}/>
         )
     }
 }
 
-export default Btc
+export default BtcContainer
