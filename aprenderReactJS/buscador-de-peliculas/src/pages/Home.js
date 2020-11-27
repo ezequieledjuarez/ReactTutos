@@ -21,17 +21,16 @@ export class Home extends Component{
 
     render(){
         return(
-            <div className = 'home'>
+            <div>
                 <Title>Buscador de Peliculas</Title>
                 <div className = "SearchForm-wrapper">
                 <SearchForm onResults={this._handleResults}/>
+            </div>
                 {
                     this.state.usedSearch
                     ? this._renderResults()
-                    : <small>Ingresa el nombre de una película</small>
-                }
-                
-                </div>
+                    : <small >Ingresa el nombre de una película</small>
+                }                
             </div>
         )
     }
