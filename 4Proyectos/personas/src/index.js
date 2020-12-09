@@ -21,7 +21,7 @@ const store = createStore(
 ReactDOM.render(
   //El provider se encarga de conectar react & redux, se le debe pasar una store
   <Provider store = {store}>
-     <App />
+     <App history = {history} />
   </Provider>,
 
   document.getElementById('root')
