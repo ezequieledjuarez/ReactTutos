@@ -6,7 +6,29 @@ container.appendChild(element)*/
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const element = <h1>Hello React</h1>
+const user = {
+  firstName: 'Ezze',
+  lastName: 'Juarez',
+  avatar: 'https://cdn0.iconfinder.com/data/icons/star-wars/512/bounty_hunter-512.png'
+}
+
+function getName(user){
+  return `${user.firstName} ${user.lastName}`
+}
+
+function getGreeting(user){
+  if(user){
+    return  <h1>Hello {getName(user)}</h1>
+  }
+  return <h1>Hello Stranger</h1>
+}
+
+const element = (
+    <div>
+      <h1>{getGreeting(user)}</h1>
+    <img src={user.avatar}/>  
+    </div>
+  )
 const container = document.getElementById('root')
 
 //ReactDOM.render(__QueElemento__, __Donde__)
