@@ -5,32 +5,16 @@ container.appendChild(element)*/
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-const user = {
-  firstName: 'Ezze',
-  lastName: 'Juarez',
-  avatar: 'https://cdn0.iconfinder.com/data/icons/star-wars/512/bounty_hunter-512.png'
-}
-
-function getName(user){
-  return `${user.firstName} ${user.lastName}`
-}
-
-function getGreeting(user){
-  if(user){
-    return  <h1>Hello {getName(user)}</h1>
-  }
-  return <h1>Hello Stranger</h1>
-}
-
-const element = (
-    <div>
-      <h1>{getGreeting(user)}</h1>
-    <img src={user.avatar}/>  
-    </div>
-  )
+import Card from './components/Card'
+import 'bootstrap/dist/css/bootstrap.css'
 const container = document.getElementById('root')
 
 //ReactDOM.render(__QueElemento__, __Donde__)
 
-ReactDOM.render(element,container)
+ReactDOM.render(<Card 
+                    description="Learn amazing street workout and calisthenics"
+                    img="https://firebasestorage.googleapis.com/v0/b/tutoriales-e4830.appspot.com/o/exercise.png?alt=media&token=b9c4b236-16a9-4a56-bba2-90c9660a0f06"    
+                    leftColor="#A74CF2"
+                    rightColor="#617BFB"
+                    title="Technique Guides"
+                />, container)
