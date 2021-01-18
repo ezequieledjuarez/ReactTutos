@@ -1,14 +1,13 @@
 import React from 'react'
 import imageAdd from '../images/add.png'
+import {Link} from 'react-router-dom'
+import './styles/Add.css'
 
 const Add = () =>(
- 
-        <div className = "add mx-auto Add-Button">
-            <img
-                src={imageAdd}
-            />
-        </div>
-    
+    <Link to = "/exercise/new">
+        <img src = {imageAdd} className = "Fitness-Add"/>
+    </Link>
 )
+
 
 export default Add
