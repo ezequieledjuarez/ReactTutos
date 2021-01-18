@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import ExerciseList from '../components/ExerciseList'
 import Welcome from '../components/Welcome'
+import Add from '../components/Add'
 
 class Exercises extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
+    state={
             data: [{
                 "id": 1,
                 "title": "Technique Guides",
@@ -31,7 +30,6 @@ class Exercises extends React.Component{
             
             
         }
-    }
     render(){
         return(
             <div>
@@ -42,6 +40,9 @@ class Exercises extends React.Component{
                <ExerciseList
                 exercises = {this.state.data}
                />
+
+            <Add/>
+
             </div>
         )
     }
